@@ -1,28 +1,39 @@
-# golang-repo-template
+# str
 
-[![Go](https://github.com/MrEhbr/golang-repo-template/actions/workflows/go.yml/badge.svg)](https://github.com/MrEhbr/golang-repo-template/actions/workflows/go.yml)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20%2F%20MIT-%2397ca00.svg)](https://github.com/MrEhbr/golang-repo-template/blob/master/COPYRIGHT)
-[![GitHub release](https://img.shields.io/github/release/MrEhbr/golang-repo-template.svg)](https://github.com/MrEhbr/golang-repo-template/releases)
-[![codecov](https://codecov.io/gh/MrEhbr/golang-repo-template/branch/master/graph/badge.svg)](https://codecov.io/gh/MrEhbr/golang-repo-template)
+[![Go](https://github.com/MrEhbr/str/actions/workflows/go.yml/badge.svg)](https://github.com/MrEhbr/str/actions/workflows/go.yml)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20%2F%20MIT-%2397ca00.svg)](https://github.com/MrEhbr/str/blob/master/COPYRIGHT)
+[![codecov](https://codecov.io/gh/MrEhbr/str/branch/master/graph/badge.svg)](https://codecov.io/gh/MrEhbr/str)
 ![Made by Alexey Burmistrov](https://img.shields.io/badge/made%20by-Alexey%20Burmistrov-blue.svg?style=flat)
-
-## Usage
-
-```console
-...
-```
 
 ## Install
 
-### Using go
-
 ```console
-go get -u github.com/MrEhbr/golang-repo-template
+go get -u github.com/MrEhbr/str
 ```
 
-### Download releases
+### Usage
 
-<https://github.com/MrEhbr/golang-repo-template/releases>
+```go
+import "github.com/MrEhbr/str"
+```
+
+## str.ToCamelCase
+
+Transform string to camel case
+
+```go
+
+str.ToCamelCase("foo_bar", true) // FooBar
+```
+
+## str.ToSnackCase
+
+Transform string to snack case
+
+```go
+
+str.ToSnackCase("Foo_bar", false) // foo_bar
+```
 
 ## License
 
