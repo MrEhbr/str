@@ -51,3 +51,49 @@ func TestToSnackCase(t *testing.T) {
 		})
 	}
 }
+
+func TestToKebabCase(t *testing.T) {
+	tests := []struct {
+		str   string
+		want  string
+		upper bool
+	}{
+		{str: "SomeStr", want: "SOME-STR", upper: true},
+		{str: "", want: "", upper: true},
+		{str: "F", want: "F", upper: true},
+		{str: "foo", want: "FOO", upper: true},
+		{str: "FooBar", want: "FOO-BAR", upper: true},
+		{str: "fooBarBaz", want: "FOO-BAR-BAZ", upper: true},
+		{str: "fooBar-baz", want: "FOO-BAR-BAZ", upper: true},
+		{str: " foo-bar\n", want: "FOO-BAR", upper: true},
+		{str: " foo-bar\t", want: "FOO-BAR", upper: true},
+		{str: " foo bar\r", want: "FOO-BAR", upper: true},
+		{str: "HTTP-status-code", want: "HTTP-STATUS-CODE", upper: true},
+		{str: "foo-bar-v2-baz", want: "FOO-BAR-V2-BAZ", upper: true},
+		{str: "fooBarV2Baz", want: "FOO-BAR-V2-BAZ", upper: true},
+
+		{str: "some-str", want: "some-str", upper: false},
+		{str: "", want: "", upper: false},
+		{str: "F", want: "f", upper: false},
+		{str: "foo", want: "foo", upper: false},
+		{str: "FooBar", want: "foo-bar", upper: false},
+		{str: "fooBarBaz", want: "foo-bar-baz", upper: false},
+		{str: "fooBar-baz", want: "foo-bar-baz", upper: false},
+		{str: " foo-bar\n", want: "foo-bar", upper: false},
+		{str: " foo-bar\t", want: "foo-bar", upper: false},
+		{str: " foo bar\r", want: "foo-bar", upper: false},
+		{str: "HTTP-status-code", want: "http-status-code", upper: false},
+		{str: "foo-bar-v2-baz", want: "foo-bar-v2-baz", upper: false},
+		{str: "fooBarV2Baz", want: "foo-bar-v2-baz", upper: false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.str, func(t *testing.T) {
+			got := ToKebabCase(tt.str, tt.upper)
+
+			if diff := cmp.Diff(tt.want, got); diff != "" {
+				t.Errorf("ToKebabCase() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
